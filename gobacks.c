@@ -32,7 +32,7 @@ void main(){
 				}else{
 					printf("Server connected to client\n");
 					int ack=1,nck=0,arrseq,i=0,n=3;
-					while(i<12){
+					while(1){
 						recv(isock,&arrseq,sizeof(arrseq),0);
 						if(rand()%3==0){
 							printf("Packet %d lost\nSending window again\n",arrseq);
@@ -41,7 +41,8 @@ void main(){
 							printf("Packet %d received\n",arrseq);
 							send(isock,&ack,sizeof(ack),0);
 							i++;
-						}sleep(3);
+						}if(i==12) break;
+						sleep(3);
 					}
 				}close(isock);
 			}close(sockfd);
