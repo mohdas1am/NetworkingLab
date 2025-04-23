@@ -27,7 +27,7 @@ void main(){
 				recv(sockfc,&rep,sizeof(rep),0);
 				if(rep==0){
 					printf("Packet %d not acknowledged\n",i);
-					i=n/3;
+					i=(i/n)*3;
 					printf("Send frame from %d\n",i);
 				}else{
 					printf("Packet %d acknowledge\n",i);
